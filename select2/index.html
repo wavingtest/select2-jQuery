@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WT Private Test</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css">
+
+  <style>
+    .sidebar-menu .header {
+      padding: 10px 15px;
+      font-size: 12px;
+      color: #8aa4af;
+      text-transform: uppercase;
+    }
+    .content-wrapper {
+      min-height: 100vh;
+    }
+    .main-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    .main-sidebar .sidebar {
+      height: calc(100vh - 57px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+    }
+    .form-section {
+      background: #fff;
+      border-radius: 4px;
+      padding: 20px;
+      box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    }
+    .form-section label {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Sidebar -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="index.html" class="brand-link">
+      <span class="brand-text font-weight-light" style="padding-left: 12px;">Sistema</span>
+    </a>
+
+    <div class="sidebar">
+      <nav class="mt-2">
+        <ul id="conteudoMenu" class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+
+          <li class="nav-header">VALORES</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" style="display: flex;">
+              <div style="margin: 0px 6px 0px 0px;"><i style="text-align: center;" class="fas fa-bullhorn nav-icon"></i></div>
+              <p>Honestidade,<br>Respeito,<br>Exemplo,<br>Comprometimento,<br>Foco no Cliente,<br>Meritocracia</p>
+            </a>
+          </li>
+
+          <li class="nav-header">MENU</li>
+
+          <!-- Início -->
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Início</p>
+            </a>
+          </li>
+
+          <!-- Clientes -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-street-view"></i>
+              <p>Clientes<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="clientes.html" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Clientes</p></a></li>
+              <li class="nav-item"><a href="/ClienteCallCenter" class="nav-link"><i class="nav-icon far fa-chart-bar"></i><p>Clientes (Analítico)</p></a></li>
+              <li class="nav-item"><a href="/Profissional" class="nav-link"><i class="nav-icon fas fa-user-tie"></i><p>Profissional</p></a></li>
+              <li class="nav-item"><a href="/ClienteUnificacao" class="nav-link"><i class="nav-icon fas fa-user-friends"></i><p>Cliente Unificação</p></a></li>
+              <li class="nav-item"><a href="/ClienteDuplicado" class="nav-link"><i class="nav-icon fas fa-users-cog"></i><p>Cliente Duplicado</p></a></li>
+              <li class="nav-item"><a href="/ClientePostoCombustivel" class="nav-link"><i class="nav-icon fas fa-gas-pump"></i><p>Cliente Posto Combustível</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Tarefas -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tasks"></i>
+              <p>Tarefas<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/tarefa" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Controle</p></a></li>
+              <li class="nav-item"><a href="/tarefa-prioridade" class="nav-link"><i class="nav-icon fas fa-thumbtack"></i><p>Prioridade</p></a></li>
+              <li class="nav-item"><a href="/tarefa-tipo" class="nav-link"><i class="nav-icon fas fa-check-double"></i><p>Tipos</p></a></li>
+              <li class="nav-item"><a href="/tarefa-ranking" class="nav-link"><i class="nav-icon fas fa-sort-numeric-up"></i><p>Ranking</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Produtos -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-boxes"></i>
+              <p>Produtos<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/catalogo-digital" class="nav-link"><i class="nav-icon fas fa-list-ol"></i><p>Catálogo Digital</p></a></li>
+              <li class="nav-item"><a href="/produto" class="nav-link"><i class="nav-icon fab fa-product-hunt"></i><p>Produtos</p></a></li>
+              <li class="nav-item"><a href="/produto-grupo" class="nav-link"><i class="nav-icon far fa-object-ungroup"></i><p>Grupo</p></a></li>
+              <li class="nav-item"><a href="/produto-subgrupo" class="nav-link"><i class="nav-icon fas fa-layer-group"></i><p>SubGrupo</p></a></li>
+              <li class="nav-item"><a href="/produto-subgrupo-preco" class="nav-link"><i class="nav-icon fas fa-percent"></i><p>Preço SubGrupo</p></a></li>
+              <li class="nav-item"><a href="/produto-marca" class="nav-link"><i class="nav-icon far fa-bookmark"></i><p>Marca</p></a></li>
+              <li class="nav-item"><a href="/produto-modelo" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Modelo</p></a></li>
+              <li class="nav-item"><a href="/produto-tamanho" class="nav-link"><i class="nav-icon fas fa-ruler"></i><p>Tamanho</p></a></li>
+              <li class="nav-item"><a href="/produto-cor" class="nav-link"><i class="nav-icon fas fa-palette"></i><p>Cor</p></a></li>
+              <li class="nav-item"><a href="/produto-materia-prima" class="nav-link"><i class="nav-icon fas fa-dolly-flatbed"></i><p>Materia Prima</p></a></li>
+              <li class="nav-item"><a href="/produto-formato" class="nav-link"><i class="nav-icon fas fa-shapes"></i><p>Formato</p></a></li>
+              <li class="nav-item"><a href="/produto-lote" class="nav-link"><i class="nav-icon fas fa-layer-group"></i><p>Produto Lote</p></a></li>
+              <li class="nav-item"><a href="/produto-opcional" class="nav-link"><i class="nav-icon fas fa-tasks"></i><p>Opcional</p></a></li>
+              <li class="nav-item"><a href="/fiscal-ncm" class="nav-link"><i class="nav-icon fas fa-hand-holding-usd"></i><p>Fiscal NCM</p></a></li>
+              <li class="nav-item"><a href="/produto-tabela-preco" class="nav-link"><i class="nav-icon fas fa-table"></i><p>Tabela de Preço</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Serviços -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-tag"></i>
+              <p>Serviços<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/servico" class="nav-link"><i class="nav-icon fas fa-tag"></i><p>Serviço</p></a></li>
+              <li class="nav-item"><a href="/servico-grupo" class="nav-link"><i class="nav-icon fas fa-object-ungroup"></i><p>Grupo</p></a></li>
+              <li class="nav-item"><a href="/servico-subgrupo" class="nav-link"><i class="nav-icon fas fa-layer-group"></i><p>SubGrupo</p></a></li>
+              <li class="nav-item"><a href="/configuracao-servicos-colaborador" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Configuração de Serviços por Colaborador</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Fiscal -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-invoice"></i>
+              <p>Fiscal<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/CertificadoNota" class="nav-link"><i class="nav-icon fas fa-certificate"></i><p>Certificado Nota</p></a></li>
+              <li class="nav-item"><a href="/EmpresaNota" class="nav-link"><i class="nav-icon fas fa-building"></i><p>Empresa Nota (Prestador)</p></a></li>
+              <li class="nav-item"><a href="/WebhookNota" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>Webhook Nota</p></a></li>
+              <li class="nav-item"><a href="/ServicoNota" class="nav-link"><i class="nav-icon far fa-file-alt"></i><p>Serviço Nota</p></a></li>
+              <li class="nav-item"><a href="/GerarNotaFiscalAutomatico" class="nav-link"><i class="nav-icon fas fa-plus"></i><p>Gerar Nota Fiscal Automático</p></a></li>
+              <li class="nav-item"><a href="/GerenciamentoNfse" class="nav-link"><i class="nav-icon fas fa-file-pdf"></i><p>Gerenciamento NFSE</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Boletos -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-invoice"></i>
+              <p>Boletos<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/boleto-cedente" class="nav-link"><i class="nav-icon fas fa-file-import"></i><p>Boletos Cedente</p></a></li>
+              <li class="nav-item"><a href="/boleto-cedente-conta" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Boletos Cedente Conta</p></a></li>
+              <li class="nav-item"><a href="/boleto-cedente-conta-convenio" class="nav-link"><i class="nav-icon fas fa-file-contract"></i><p>Boletos Cedente Conta Convênio</p></a></li>
+              <li class="nav-item"><a href="/PlugBoletoConfiguracao" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Plug Boletos Configuração</p></a></li>
+              <li class="nav-item"><a href="/DepositoViaBoleto" class="nav-link"><i class="nav-icon fas fa-barcode"></i><p>Depósito Via Boletos</p></a></li>
+              <li class="nav-item"><a href="/GerenciamentoBoleto" class="nav-link"><i class="nav-icon far fa-file-alt"></i><p>Gerenciamento boleto</p></a></li>
+              <li class="nav-item"><a href="/BoletoSolicitacaoImpressao" class="nav-link"><i class="nav-icon fas fa-print"></i><p>Boletos Solicitação impressão</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Pagamento Automático -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <p>Pagamento Automático<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/pagador" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Pagador</p></a></li>
+              <li class="nav-item"><a href="/PagadorConta" class="nav-link"><i class="nav-icon fas fa-money-check-alt"></i><p>Pagador Conta</p></a></li>
+              <li class="nav-item"><a href="/GerenciamentoPagamentoAutomatico" class="nav-link"><i class="nav-icon fas fa-file-invoice"></i><p>Gerenciamento Pagamento Automático</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Pix -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-key"></i>
+              <p>Pix<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/pix-empresa" class="nav-link"><i class="nav-icon fas fa-university"></i><p>Empresa Pix</p></a></li>
+              <li class="nav-item"><a href="/pix-conta" class="nav-link"><i class="nav-icon fas fa-wallet"></i><p>Conta Pix</p></a></li>
+              <li class="nav-item"><a href="/pix-configuracao-webhook" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>Configuração Webhook Pix</p></a></li>
+              <li class="nav-item"><a href="/GerenciamentoPix" class="nav-link"><i class="nav-icon fas fa-tasks"></i><p>Gerenciamento Pix</p></a></li>
+            </ul>
+          </li>
+
+          <!-- TEF -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-credit-card"></i>
+              <p>TEF<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/TefConfiguracao" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>TEF Configuração</p></a></li>
+              <li class="nav-item"><a href="/TefConfiguracaoPinpad" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>TEF Configuração Pinpad</p></a></li>
+              <li class="nav-item"><a href="/TefGerenciamento" class="nav-link"><i class="nav-icon fas fa-tasks"></i><p>TEF Gerenciamento</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Assinatura Pagar.me -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-signature"></i>
+              <p>Assinatura Pagar.me<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/ConfiguracaoPagarme" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>Configuração Pagar.me</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Cadastros -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>Cadastros<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/menu-favorito" class="nav-link"><i class="nav-icon fas fa-archive"></i><p>Menu Favorito</p></a></li>
+              <li class="nav-item"><a href="/fornecedor" class="nav-link"><i class="nav-icon fas fa-user-friends"></i><p>Fornecedor</p></a></li>
+              <li class="nav-item"><a href="/segmento" class="nav-link"><i class="nav-icon fas fa-archive"></i><p>Segmento</p></a></li>
+              <li class="nav-item"><a href="/setor" class="nav-link"><i class="nav-icon fas fa-chart-pie"></i><p>Setor</p></a></li>
+              <li class="nav-item"><a href="/colaborador" class="nav-link"><i class="nav-icon fas fa-id-card"></i><p>Colaborador</p></a></li>
+              <li class="nav-item"><a href="/empresa" class="nav-link"><i class="nav-icon fas fa-university"></i><p>Empresa</p></a></li>
+              <li class="nav-item"><a href="/configuracao" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Configuração</p></a></li>
+              <li class="nav-item"><a href="/uf" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>UF</p></a></li>
+              <li class="nav-item"><a href="/municipio" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Município</p></a></li>
+              <li class="nav-item"><a href="/bairro" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Bairro</p></a></li>
+              <li class="nav-item"><a href="/rua" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Rua</p></a></li>
+              <li class="nav-item"><a href="/usuario" class="nav-link"><i class="nav-icon fas fa-key"></i><p>Usuário</p></a></li>
+              <li class="nav-item"><a href="/perfil-acesso" class="nav-link"><i class="nav-icon far fa-user"></i><p>Perfil Acesso</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Monitoramento -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>Monitoramento<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/comparativo-recebimento-pagamento" class="nav-link"><i class="nav-icon fas fa-chart-line"></i><p>Comparativo Recebimento X Pagamento</p></a></li>
+              <li class="nav-item"><a href="/contas-padrao-consumo" class="nav-link"><i class="nav-icon fas fa-chart-bar"></i><p>Padrão de Consumo de Contas</p></a></li>
+              <li class="nav-item"><a href="/dashboard-financeiro" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard Financeiro</p></a></li>
+              <li class="nav-item"><a href="/estoque-dashboard" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard Estoque</p></a></li>
+            </ul>
+          </li>
+
+          <li class="nav-header">MÓDULOS</li>
+
+          <!-- Cemitérios -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cross"></i>
+              <p>Cemitérios<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/cemiterio" class="nav-link"><i class="nav-icon fas fa-cross"></i><p>Cemitério</p></a></li>
+              <li class="nav-item"><a href="/jazigo" class="nav-link"><i class="nav-icon fas fa-church"></i><p>Jazigo</p></a></li>
+              <li class="nav-item"><a href="/JazigoVenda" class="nav-link"><i class="nav-icon fas fa-money-bill-alt"></i><p>Venda Jazigo</p></a></li>
+              <li class="nav-item"><a href="/velorio" class="nav-link"><i class="nav-icon fas fa-church"></i><p>Velório</p></a></li>
+              <li class="nav-item"><a href="/Sepultamento" class="nav-link"><i class="nav-icon fas fa-cross"></i><p>Sepultamento</p></a></li>
+              <li class="nav-item"><a href="/obito" class="nav-link"><i class="nav-icon fas fa-skull"></i><p>Óbito</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Clínica -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-hospital"></i>
+              <p>Clínica<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/AgendamentoClinica" class="nav-link"><i class="nav-icon fas fa-calendar-check"></i><p>Agendamento</p></a></li>
+              <li class="nav-item"><a href="/ProntuarioEletronicoV2" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Atendimento</p></a></li>
+              <li class="nav-item"><a href="/convenio" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Convênio</p></a></li>
+              <li class="nav-item"><a href="/exame" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Exames</p></a></li>
+              <li class="nav-item"><a href="/ClinicaHorario" class="nav-link"><i class="nav-icon fas fa-user-clock"></i><p>Horário de Atendimento</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Planos -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>Planos<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/plano" class="nav-link"><i class="nav-icon fas fa-paste"></i><p>Plano</p></a></li>
+              <li class="nav-item"><a href="/PlanoContratacaoV2" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Venda de Planos</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Financeiro -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-money-bill-alt"></i>
+              <p>Financeiro<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/Conciliacao" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Conciliação Cartão</p></a></li>
+              <li class="nav-item"><a href="/ConciliacaoBancaria" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Conciliação Bancária</p></a></li>
+              <li class="nav-item"><a href="/LivroCaixa" class="nav-link"><i class="nav-icon fas fa-book"></i><p>Livro Caixa</p></a></li>
+              <li class="nav-item"><a href="/Mensalidade" class="nav-link"><i class="nav-icon fas fa-barcode"></i><p>Baixa Mensalidades</p></a></li>
+              <li class="nav-item"><a href="/Pagamento" class="nav-link"><i class="nav-icon fas fa-reply-all"></i><p>Pagamentos</p></a></li>
+              <li class="nav-item"><a href="/Recebimento" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Recebimentos</p></a></li>
+              <li class="nav-item"><a href="/Contrato" class="nav-link"><i class="nav-icon fas fa-file-contract"></i><p>Contratos</p></a></li>
+              <li class="nav-item"><a href="/Pix" class="nav-link"><i class="nav-icon fas fa-dollar-sign"></i><p>Pix</p></a></li>
+              <li class="nav-item"><a href="/Deposito" class="nav-link"><i class="nav-icon fas fa-piggy-bank"></i><p>Depósitos</p></a></li>
+            </ul>
+          </li>
+
+          <!-- RH -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>RH<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/folha-pagamento" class="nav-link"><i class="nav-icon fas fa-paste"></i><p>Folha Pagamento</p></a></li>
+              <li class="nav-item"><a href="/registro-ponto" class="nav-link"><i class="nav-icon fas fa-calendar-check"></i><p>Histórico Ponto</p></a></li>
+              <li class="nav-item"><a href="/ferias" class="nav-link"><i class="nav-icon fas fa-calendar-times"></i><p>Férias</p></a></li>
+              <li class="nav-item"><a href="/treinamento" class="nav-link"><i class="nav-icon fas fa-book-reader"></i><p>Treinamento</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Estoque -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cubes"></i>
+              <p>Estoque<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/Compra" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i><p>Compra</p></a></li>
+              <li class="nav-item"><a href="/ajuste-estoque" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Ajuste Estoque</p></a></li>
+              <li class="nav-item"><a href="/cotacao" class="nav-link"><i class="nav-icon fas fa-shopping-basket"></i><p>Cotação</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Faturamento -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-dollar-sign"></i>
+              <p>Faturamento<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/Venda" class="nav-link"><i class="nav-icon fas fa-dollar-sign"></i><p>Venda</p></a></li>
+              <li class="nav-item"><a href="/OrdemServico" class="nav-link"><i class="nav-icon fas fa-file-invoice"></i><p>Ordem Serviço</p></a></li>
+              <li class="nav-item"><a href="/ProdutoOrcamento" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Orçamento Farmácia</p></a></li>
+            </ul>
+          </li>
+
+          <!-- Call Center -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-headset"></i>
+              <p>Call Center<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/CentralAtendimentos" class="nav-link"><i class="nav-icon fas fa-globe"></i><p>Central Atendimentos</p></a></li>
+              <li class="nav-item"><a href="/ListagemAtendimentos" class="nav-link"><i class="nav-icon fas fa-list-ul"></i><p>Listagem Atendimento</p></a></li>
+            </ul>
+          </li>
+
+          <!-- APP -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-mobile"></i>
+              <p>APP<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="/DispositivosHomologados" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Dispositivo Homologado</p></a></li>
+              <li class="nav-item"><a href="/RelatorioArrecadacaoMensal" class="nav-link"><i class="nav-icon fas fa-chart-pie"></i><p>Arrecadação Mensal</p></a></li>
+              <li class="nav-item"><a href="/Visita" class="nav-link"><i class="nav-icon fas fa-briefcase"></i><p>Visita</p></a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper" style="margin-left: 250px;">
+    <!-- Content Header -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0" id="pageTitle">Clientes</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+              <li class="breadcrumb-item active" id="breadcrumbCurrent">Clientes</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+        <!-- Filtros -->
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-filter mr-1"></i> Filtros</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filtroCliente">Cliente</label>
+                  <select id="filtroCliente" class="form-control select2-single" style="width: 100%;">
+                    <option value="">Todos</option>
+                    <option value="1">João Silva</option>
+                    <option value="2">Maria Santos</option>
+                    <option value="3">Carlos Oliveira</option>
+                    <option value="4">Ana Paula Ferreira</option>
+                    <option value="5">Roberto Costa</option>
+                    <option value="6">Fernanda Lima</option>
+                    <option value="7">Pedro Souza</option>
+                    <option value="8">Juliana Almeida</option>
+                    <option value="9">Lucas Pereira</option>
+                    <option value="10">Beatriz Rodrigues</option>
+                    <option value="11">Gabriel Martins</option>
+                    <option value="12">Camila Araújo</option>
+                    <option value="13">Rafael Barbosa</option>
+                    <option value="14">Larissa Cardoso</option>
+                    <option value="15">Thiago Mendes</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filtroStatus">Status</label>
+                  <select id="filtroStatus" class="form-control select2-single" style="width: 100%;">
+                    <option value="">Todos</option>
+                    <option value="ativo">Ativo</option>
+                    <option value="inativo">Inativo</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="bloqueado">Bloqueado</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filtroSegmento">Segmento</label>
+                  <select id="filtroSegmento" class="form-control select2-single" style="width: 100%;">
+                    <option value="">Todos</option>
+                    <option value="1">Varejo</option>
+                    <option value="2">Atacado</option>
+                    <option value="3">Indústria</option>
+                    <option value="4">Serviços</option>
+                    <option value="5">Saúde</option>
+                    <option value="6">Educação</option>
+                    <option value="7">Tecnologia</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filtroUF">UF</label>
+                  <select id="filtroUF" class="form-control select2-single" style="width: 100%;">
+                    <option value="">Todos</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filtroCidade">Cidade</label>
+                  <select id="filtroCidade" class="form-control select2-single" style="width: 100%;">
+                    <option value="">Todos</option>
+                    <option value="1">São Paulo</option>
+                    <option value="2">Rio de Janeiro</option>
+                    <option value="3">Belo Horizonte</option>
+                    <option value="4">Salvador</option>
+                    <option value="5">Curitiba</option>
+                    <option value="6">Fortaleza</option>
+                    <option value="7">Recife</option>
+                    <option value="8">Porto Alegre</option>
+                    <option value="9">Manaus</option>
+                    <option value="10">Brasília</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="filtroVendedor">Vendedor</label>
+                  <select id="filtroVendedor" class="form-control select2-single" style="width: 100%;">
+                    <option value="">Todos</option>
+                    <option value="1">André Luiz</option>
+                    <option value="2">Marcos Paulo</option>
+                    <option value="3">Patricia Gomes</option>
+                    <option value="4">Ricardo Farias</option>
+                    <option value="5">Sandra Melo</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-12 text-right">
+                <button type="button" id="btnLimparFiltros" class="btn btn-default mr-2"><i class="fas fa-eraser mr-1"></i> Limpar</button>
+                <button type="button" id="btnAplicarFiltros" class="btn btn-primary"><i class="fas fa-search mr-1"></i> Pesquisar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela de resultados -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-list mr-1"></i> Listagem de Clientes</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-success btn-sm"><i class="fas fa-plus mr-1"></i> Novo Cliente</button>
+            </div>
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover table-striped text-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>CPF/CNPJ</th>
+                  <th>Telefone</th>
+                  <th>Vendedor</th>
+                  <th>Segmento</th>
+                  <th>Cidade</th>
+                  <th>UF</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>João Silva</td>
+                  <td>123.456.789-00</td>
+                  <td>(11) 99999-0001</td>
+                  <td>André Luiz</td>
+                  <td>Varejo</td>
+                  <td>São Paulo</td>
+                  <td>SP</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Maria Santos</td>
+                  <td>987.654.321-00</td>
+                  <td>(21) 98888-0002</td>
+                  <td>Marcos Paulo</td>
+                  <td>Atacado</td>
+                  <td>Rio de Janeiro</td>
+                  <td>RJ</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Carlos Oliveira</td>
+                  <td>456.789.123-00</td>
+                  <td>(31) 97777-0003</td>
+                  <td>Patricia Gomes</td>
+                  <td>Indústria</td>
+                  <td>Belo Horizonte</td>
+                  <td>MG</td>
+                  <td><span class="badge badge-warning">Pendente</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Ana Paula Ferreira</td>
+                  <td>12.345.678/0001-90</td>
+                  <td>(71) 96666-0004</td>
+                  <td>Ricardo Farias</td>
+                  <td>Serviços</td>
+                  <td>Salvador</td>
+                  <td>BA</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Roberto Costa</td>
+                  <td>789.123.456-00</td>
+                  <td>(41) 95555-0005</td>
+                  <td>Sandra Melo</td>
+                  <td>Saúde</td>
+                  <td>Curitiba</td>
+                  <td>PR</td>
+                  <td><span class="badge badge-danger">Inativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Fernanda Lima</td>
+                  <td>321.654.987-00</td>
+                  <td>(85) 94444-0006</td>
+                  <td>André Luiz</td>
+                  <td>Tecnologia</td>
+                  <td>Fortaleza</td>
+                  <td>CE</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Pedro Souza</td>
+                  <td>654.987.321-00</td>
+                  <td>(81) 93333-0007</td>
+                  <td>Marcos Paulo</td>
+                  <td>Varejo</td>
+                  <td>Recife</td>
+                  <td>PE</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Juliana Almeida</td>
+                  <td>98.765.432/0001-10</td>
+                  <td>(51) 92222-0008</td>
+                  <td>Patricia Gomes</td>
+                  <td>Atacado</td>
+                  <td>Porto Alegre</td>
+                  <td>RS</td>
+                  <td><span class="badge badge-secondary">Bloqueado</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Lucas Pereira</td>
+                  <td>147.258.369-00</td>
+                  <td>(92) 91111-0009</td>
+                  <td>Ricardo Farias</td>
+                  <td>Indústria</td>
+                  <td>Manaus</td>
+                  <td>AM</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Beatriz Rodrigues</td>
+                  <td>369.258.147-00</td>
+                  <td>(61) 90000-0010</td>
+                  <td>Sandra Melo</td>
+                  <td>Serviços</td>
+                  <td>Brasília</td>
+                  <td>DF</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>Gabriel Nunes</td>
+                  <td>741.852.963-11</td>
+                  <td>(62) 98888-1011</td>
+                  <td>André Luiz</td>
+                  <td>Saúde</td>
+                  <td>Goiânia</td>
+                  <td>GO</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>Carolina Matos</td>
+                  <td>852.963.741-12</td>
+                  <td>(48) 97777-1012</td>
+                  <td>Marcos Paulo</td>
+                  <td>Tecnologia</td>
+                  <td>Florianópolis</td>
+                  <td>SC</td>
+                  <td><span class="badge badge-warning">Pendente</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>Henrique Lopes</td>
+                  <td>963.741.852-13</td>
+                  <td>(63) 96666-1013</td>
+                  <td>Patricia Gomes</td>
+                  <td>Atacado</td>
+                  <td>Palmas</td>
+                  <td>TO</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>Rafaela Duarte</td>
+                  <td>159.753.486-14</td>
+                  <td>(27) 95555-1014</td>
+                  <td>Ricardo Farias</td>
+                  <td>Varejo</td>
+                  <td>Vitória</td>
+                  <td>ES</td>
+                  <td><span class="badge badge-danger">Inativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>Marcelo Tavares</td>
+                  <td>258.369.147-15</td>
+                  <td>(98) 94444-1015</td>
+                  <td>Sandra Melo</td>
+                  <td>Indústria</td>
+                  <td>São Luís</td>
+                  <td>MA</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>Simone Azevedo</td>
+                  <td>357.159.486-16</td>
+                  <td>(91) 93333-1016</td>
+                  <td>André Luiz</td>
+                  <td>Serviços</td>
+                  <td>Belém</td>
+                  <td>PA</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>17</td>
+                  <td>Thiago Barros</td>
+                  <td>468.357.159-17</td>
+                  <td>(54) 92222-1017</td>
+                  <td>Marcos Paulo</td>
+                  <td>Saúde</td>
+                  <td>Caxias do Sul</td>
+                  <td>RS</td>
+                  <td><span class="badge badge-secondary">Bloqueado</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>18</td>
+                  <td>Larissa Campos</td>
+                  <td>579.468.357-18</td>
+                  <td>(83) 91111-1018</td>
+                  <td>Patricia Gomes</td>
+                  <td>Tecnologia</td>
+                  <td>João Pessoa</td>
+                  <td>PB</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>19</td>
+                  <td>Eduardo Freitas</td>
+                  <td>680.579.468-19</td>
+                  <td>(79) 90000-1019</td>
+                  <td>Ricardo Farias</td>
+                  <td>Atacado</td>
+                  <td>Aracaju</td>
+                  <td>SE</td>
+                  <td><span class="badge badge-warning">Pendente</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>20</td>
+                  <td>Priscila Mendes</td>
+                  <td>791.680.579-20</td>
+                  <td>(82) 98989-1020</td>
+                  <td>Sandra Melo</td>
+                  <td>Varejo</td>
+                  <td>Maceió</td>
+                  <td>AL</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td>Daniel Carvalho</td>
+                  <td>802.791.680-21</td>
+                  <td>(65) 97878-1021</td>
+                  <td>André Luiz</td>
+                  <td>Indústria</td>
+                  <td>Cuiabá</td>
+                  <td>MT</td>
+                  <td><span class="badge badge-danger">Inativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>22</td>
+                  <td>Vanessa Ribeiro</td>
+                  <td>913.802.791-22</td>
+                  <td>(67) 96767-1022</td>
+                  <td>Marcos Paulo</td>
+                  <td>Serviços</td>
+                  <td>Campo Grande</td>
+                  <td>MS</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>23</td>
+                  <td>Bruno Aragão</td>
+                  <td>024.913.802-23</td>
+                  <td>(95) 95656-1023</td>
+                  <td>Patricia Gomes</td>
+                  <td>Saúde</td>
+                  <td>Boa Vista</td>
+                  <td>RR</td>
+                  <td><span class="badge badge-secondary">Bloqueado</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>24</td>
+                  <td>Natália Prado</td>
+                  <td>135.024.913-24</td>
+                  <td>(68) 94545-1024</td>
+                  <td>Ricardo Farias</td>
+                  <td>Tecnologia</td>
+                  <td>Rio Branco</td>
+                  <td>AC</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td>Felipe Martins</td>
+                  <td>246.135.024-25</td>
+                  <td>(69) 93434-1025</td>
+                  <td>Sandra Melo</td>
+                  <td>Atacado</td>
+                  <td>Porto Velho</td>
+                  <td>RO</td>
+                  <td><span class="badge badge-warning">Pendente</span></td>
+                  <td>
+                    <button class="btn btn-info btn-xs"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+              <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+            </ul>
+            <span class="float-left mt-1 text-muted">Mostrando 1 a 10 de 25 registros</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/js/adminlte.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/pt-BR.js"></script>
+
+<script>
+  $(function () {
+    const params = new URLSearchParams(window.location.search);
+    const isClientesMode = params.get('page') === 'clientes';
+
+    if (!isClientesMode) {
+      document.title = 'WT Private Test - Início';
+      $('#pageTitle').text('Início');
+      $('#breadcrumbCurrent').text('Início');
+
+      $('.content .container-fluid').first().html(`
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> Objetivo do ambiente</h3>
+          </div>
+          <div class="card-body">
+            <p>Este site privado simula o comportamento de componentes da biblioteca <strong>Select2</strong> para validação do WT.</p>
+            <p>Para testar o cenário principal de single select, navegue no menu lateral em <strong>Clientes &gt; Clientes</strong> ou clique no botão abaixo.</p>
+            <a class="btn btn-primary" href="clientes.html">
+              <i class="fas fa-arrow-right mr-1"></i> Ir para página de teste
+            </a>
+          </div>
+        </div>
+      `);
+    } else {
+      document.title = 'WT Private Test - Select2';
+      $('#pageTitle').text('Clientes');
+      $('#breadcrumbCurrent').text('Clientes');
+    }
+
+    $('.select2-single').select2({
+      theme: 'bootstrap4',
+      language: 'pt-BR',
+      placeholder: 'Todos',
+      allowClear: true
+    });
+
+    if (isClientesMode) {
+      const normalize = (value) =>
+        (value || '')
+          .toString()
+          .trim()
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '');
+
+      const $tableRows = $('table tbody tr');
+      const $pagination = $('.pagination');
+      const $paginationInfo = $('.card-footer .text-muted');
+      const rowsPerPage = 10;
+      let filteredRows = $tableRows.toArray();
+      let currentPage = 1;
+
+      const renderPagination = (totalPages) => {
+        let paginationHtml = `
+          <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-action="prev">&laquo;</a>
+          </li>
+        `;
+
+        for (let page = 1; page <= totalPages; page += 1) {
+          paginationHtml += `
+            <li class="page-item ${page === currentPage ? 'active' : ''}">
+              <a class="page-link" href="#" data-page="${page}">${page}</a>
+            </li>
+          `;
+        }
+
+        paginationHtml += `
+          <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+            <a class="page-link" href="#" data-action="next">&raquo;</a>
+          </li>
+        `;
+
+        $pagination.html(paginationHtml);
+      };
+
+      const renderTablePage = () => {
+        const totalRows = filteredRows.length;
+        const totalPages = Math.max(1, Math.ceil(totalRows / rowsPerPage));
+        currentPage = Math.min(currentPage, totalPages);
+
+        $tableRows.hide();
+
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = startIndex + rowsPerPage;
+        const rowsForPage = filteredRows.slice(startIndex, endIndex);
+
+        $(rowsForPage).show();
+
+        const startLabel = totalRows === 0 ? 0 : startIndex + 1;
+        const endLabel = Math.min(endIndex, totalRows);
+        $paginationInfo.text(`Mostrando ${startLabel} a ${endLabel} de ${totalRows} registros`);
+
+        renderPagination(totalPages);
+      };
+
+      const applyFilters = (resetPage = true) => {
+        const selectedClienteText = normalize($('#filtroCliente option:selected').text());
+        const selectedStatus = normalize($('#filtroStatus option:selected').text());
+        const selectedVendedor = normalize($('#filtroVendedor option:selected').text());
+        const selectedSegmento = normalize($('#filtroSegmento option:selected').text());
+        const selectedCidade = normalize($('#filtroCidade option:selected').text());
+        const selectedUf = normalize($('#filtroUF').val());
+
+        filteredRows = $tableRows.filter(function () {
+          const $row = $(this);
+          const nome = normalize($row.find('td').eq(1).text());
+          const vendedor = normalize($row.find('td').eq(4).text());
+          const segmento = normalize($row.find('td').eq(5).text());
+          const cidade = normalize($row.find('td').eq(6).text());
+          const uf = normalize($row.find('td').eq(7).text());
+          const status = normalize($row.find('td').eq(8).text());
+
+          const clienteMatches = !selectedClienteText || selectedClienteText === 'todos' || nome === selectedClienteText;
+          const statusMatches = !selectedStatus || selectedStatus === 'todos' || status === selectedStatus;
+          const vendedorMatches = !selectedVendedor || selectedVendedor === 'todos' || vendedor === selectedVendedor;
+          const segmentoMatches = !selectedSegmento || selectedSegmento === 'todos' || segmento === selectedSegmento;
+          const cidadeMatches = !selectedCidade || selectedCidade === 'todos' || cidade === selectedCidade;
+          const ufMatches = !selectedUf || uf === selectedUf;
+
+          return clienteMatches && statusMatches && vendedorMatches && segmentoMatches && cidadeMatches && ufMatches;
+        }).toArray();
+
+        if (resetPage) {
+          currentPage = 1;
+        }
+
+        renderTablePage();
+      };
+
+      $pagination.on('click', 'a.page-link', function (event) {
+        event.preventDefault();
+
+        const action = $(this).data('action');
+        const page = Number($(this).data('page'));
+        const totalPages = Math.max(1, Math.ceil(filteredRows.length / rowsPerPage));
+
+        if (action === 'prev' && currentPage > 1) {
+          currentPage -= 1;
+          renderTablePage();
+          return;
+        }
+
+        if (action === 'next' && currentPage < totalPages) {
+          currentPage += 1;
+          renderTablePage();
+          return;
+        }
+
+        if (page >= 1 && page <= totalPages) {
+          currentPage = page;
+          renderTablePage();
+        }
+      });
+
+      $('#btnAplicarFiltros').on('click', function () {
+        applyFilters(true);
+      });
+
+      $('#btnLimparFiltros').on('click', function () {
+        $('#filtroCliente, #filtroStatus, #filtroSegmento, #filtroUF, #filtroCidade, #filtroVendedor')
+          .val('')
+          .trigger('change');
+
+        applyFilters(true);
+      });
+
+      applyFilters(true);
+    }
+
+    $(document).on('click', '#conteudoMenu a, .brand-link', function (event) {
+      const href = ($(this).attr('href') || '').toLowerCase();
+      const allowNavigation = href.endsWith('index.html') || href.endsWith('clientes.html');
+      const isAccordionToggle = href === '#';
+
+      if (allowNavigation || isAccordionToggle) return;
+      event.preventDefault();
+      event.stopPropagation();
+    });
+
+  });
+</script>
+</body>
+</html>
