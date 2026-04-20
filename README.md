@@ -24,16 +24,24 @@ clientes que adotam essa stack.
 
 ## Como rodar
 
-Este projeto é estático e é servido localmente com `HttpListener` via PowerShell.
+Instale as dependências e rode com Vite:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\serve.ps1
+```bash
+npm install
+npm run dev
 ```
 
-Acesse `http://localhost:8090`.
+Acesse `http://localhost:3000`.
+
+## Build de produção
+
+```bash
+npm run build
+npm run preview
+```
 
 ## Estrutura do projeto
 
 - `select2/index.html` — layout principal e toda a lógica de filtros/paginação.
 - `select2/clientes.html` — página de redirecionamento para o modo clientes.
-- `serve.ps1` — servidor HTTP local para servir os arquivos estáticos.
+- `package.json` — scripts de execução e build com Vite.

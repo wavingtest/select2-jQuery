@@ -1,0 +1,13 @@
+{
+  "name": "wt-private-select2",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite select2 --host --port 3000",
+    "build": "vite build select2",
+    "preview": "vite preview --host --port 3000"
+  },
+  "devDependencies": {
+    "vite": "^7.1.10"
+  }
+}
