@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WT Private Test</title>
+  <title>Sandbox UI • Select2</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -11,14 +11,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css">
 
   <style>
+    :root {
+      --wt-bg: #f4f7fb;
+      --wt-surface: #ffffff;
+      --wt-sidebar: #1d4ed8;
+      --wt-sidebar-muted: #9ca3af;
+      --wt-primary: #0f766e;
+      --wt-primary-soft: #ecfeff;
+      --wt-border: #d1d5db;
+      --wt-text: #1f2937;
+    }
+    body {
+      font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
+      background: var(--wt-bg);
+      color: var(--wt-text);
+    }
     .sidebar-menu .header {
       padding: 10px 15px;
       font-size: 12px;
-      color: #8aa4af;
+      color: var(--wt-sidebar-muted);
       text-transform: uppercase;
     }
     .content-wrapper {
       min-height: 100vh;
+      background: var(--wt-bg);
     }
     .main-sidebar {
       position: fixed;
@@ -27,6 +43,7 @@
       height: 100vh;
       overflow-y: auto;
       z-index: 1000;
+      background: var(--wt-sidebar);
     }
     .main-sidebar .sidebar {
       height: calc(100vh - 57px);
@@ -34,15 +51,83 @@
       overflow-x: hidden;
       scrollbar-width: thin;
     }
+    .brand-link {
+      background: #1e40af;
+      border-bottom: 1px solid #1e3a8a !important;
+    }
+    .brand-text {
+      letter-spacing: .3px;
+      font-weight: 600 !important;
+    }
+    .nav-sidebar .nav-header {
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+    .nav-sidebar .nav-link {
+      border-radius: 8px;
+      margin: 2px 8px;
+    }
+    .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link,
+    .sidebar-dark-primary .nav-sidebar .nav-treeview > .nav-item > .nav-link,
+    .sidebar-dark-primary .brand-link,
+    .sidebar-dark-primary .nav-header {
+      color: #e5e7eb;
+    }
+    .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link .right,
+    .sidebar-dark-primary .nav-sidebar .nav-icon {
+      color: #e5e7eb;
+    }
+    .nav-sidebar .nav-link:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #f9fafb;
+    }
+    .nav-sidebar .menu-open > .nav-link {
+      background: rgba(255, 255, 255, 0.2);
+      color: #f9fafb;
+    }
     .form-section {
-      background: #fff;
-      border-radius: 4px;
+      background: var(--wt-surface);
+      border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+      border: 1px solid var(--wt-border);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
     }
     .form-section label {
       font-weight: 600;
       margin-bottom: 6px;
+    }
+    .card {
+      border-radius: 12px;
+      border: 1px solid var(--wt-border);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+    }
+    .card-header {
+      background: var(--wt-surface);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .btn-primary {
+      background-color: var(--wt-primary);
+      border-color: var(--wt-primary);
+    }
+    .btn-primary:hover {
+      background-color: #0d9488;
+      border-color: #0d9488;
+    }
+    .btn-success,
+    .btn-success:hover,
+    .btn-success:focus,
+    .btn-success:active,
+    .btn-success:not(:disabled):not(.disabled):active {
+      background-color: #2563eb;
+      border-color: #2563eb;
+    }
+    .table thead th {
+      background: var(--wt-primary-soft);
+      border-bottom: 1px solid #bae6fd;
+    }
+    .pagination .page-item.active .page-link {
+      background-color: var(--wt-primary);
+      border-color: var(--wt-primary);
     }
   </style>
 </head>
@@ -52,22 +137,14 @@
   <!-- Sidebar -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="index.html" class="brand-link">
-      <span class="brand-text font-weight-light" style="padding-left: 12px;">Sistema</span>
+      <span class="brand-text font-weight-light" style="padding-left: 12px;">Sandbox UI</span>
     </a>
 
     <div class="sidebar">
       <nav class="mt-2">
         <ul id="conteudoMenu" class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
 
-          <li class="nav-header">VALORES</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link" style="display: flex;">
-              <div style="margin: 0px 6px 0px 0px;"><i style="text-align: center;" class="fas fa-bullhorn nav-icon"></i></div>
-              <p>Honestidade,<br>Respeito,<br>Exemplo,<br>Comprometimento,<br>Foco no Cliente,<br>Meritocracia</p>
-            </a>
-          </li>
-
-          <li class="nav-header">MENU</li>
+          <li class="nav-header">NAVEGAÇÃO</li>
 
           <!-- Início -->
           <li class="nav-item">
@@ -77,19 +154,15 @@
             </a>
           </li>
 
-          <!-- Clientes -->
+          <!-- Registro -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-street-view"></i>
-              <p>Clientes<i class="right fas fa-angle-left"></i></p>
+              <i class="nav-icon fas fa-folder-open"></i>
+              <p>Registro<i class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="clientes.html" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Clientes</p></a></li>
-              <li class="nav-item"><a href="/ClienteCallCenter" class="nav-link"><i class="nav-icon far fa-chart-bar"></i><p>Clientes (Analítico)</p></a></li>
+              <li class="nav-item"><a href="clientes.html" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Registros</p></a></li>
               <li class="nav-item"><a href="/Profissional" class="nav-link"><i class="nav-icon fas fa-user-tie"></i><p>Profissional</p></a></li>
-              <li class="nav-item"><a href="/ClienteUnificacao" class="nav-link"><i class="nav-icon fas fa-user-friends"></i><p>Cliente Unificação</p></a></li>
-              <li class="nav-item"><a href="/ClienteDuplicado" class="nav-link"><i class="nav-icon fas fa-users-cog"></i><p>Cliente Duplicado</p></a></li>
-              <li class="nav-item"><a href="/ClientePostoCombustivel" class="nav-link"><i class="nav-icon fas fa-gas-pump"></i><p>Cliente Posto Combustível</p></a></li>
             </ul>
           </li>
 
@@ -97,303 +170,24 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tasks"></i>
-              <p>Tarefas<i class="right fas fa-angle-left"></i></p>
+              <p>Tarefas</p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/tarefa" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Controle</p></a></li>
-              <li class="nav-item"><a href="/tarefa-prioridade" class="nav-link"><i class="nav-icon fas fa-thumbtack"></i><p>Prioridade</p></a></li>
-              <li class="nav-item"><a href="/tarefa-tipo" class="nav-link"><i class="nav-icon fas fa-check-double"></i><p>Tipos</p></a></li>
-              <li class="nav-item"><a href="/tarefa-ranking" class="nav-link"><i class="nav-icon fas fa-sort-numeric-up"></i><p>Ranking</p></a></li>
-            </ul>
           </li>
 
           <!-- Produtos -->
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-boxes"></i>
-              <p>Produtos<i class="right fas fa-angle-left"></i></p>
+              <p>Produtos</p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/catalogo-digital" class="nav-link"><i class="nav-icon fas fa-list-ol"></i><p>Catálogo Digital</p></a></li>
-              <li class="nav-item"><a href="/produto" class="nav-link"><i class="nav-icon fab fa-product-hunt"></i><p>Produtos</p></a></li>
-              <li class="nav-item"><a href="/produto-grupo" class="nav-link"><i class="nav-icon far fa-object-ungroup"></i><p>Grupo</p></a></li>
-              <li class="nav-item"><a href="/produto-subgrupo" class="nav-link"><i class="nav-icon fas fa-layer-group"></i><p>SubGrupo</p></a></li>
-              <li class="nav-item"><a href="/produto-subgrupo-preco" class="nav-link"><i class="nav-icon fas fa-percent"></i><p>Preço SubGrupo</p></a></li>
-              <li class="nav-item"><a href="/produto-marca" class="nav-link"><i class="nav-icon far fa-bookmark"></i><p>Marca</p></a></li>
-              <li class="nav-item"><a href="/produto-modelo" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Modelo</p></a></li>
-              <li class="nav-item"><a href="/produto-tamanho" class="nav-link"><i class="nav-icon fas fa-ruler"></i><p>Tamanho</p></a></li>
-              <li class="nav-item"><a href="/produto-cor" class="nav-link"><i class="nav-icon fas fa-palette"></i><p>Cor</p></a></li>
-              <li class="nav-item"><a href="/produto-materia-prima" class="nav-link"><i class="nav-icon fas fa-dolly-flatbed"></i><p>Materia Prima</p></a></li>
-              <li class="nav-item"><a href="/produto-formato" class="nav-link"><i class="nav-icon fas fa-shapes"></i><p>Formato</p></a></li>
-              <li class="nav-item"><a href="/produto-lote" class="nav-link"><i class="nav-icon fas fa-layer-group"></i><p>Produto Lote</p></a></li>
-              <li class="nav-item"><a href="/produto-opcional" class="nav-link"><i class="nav-icon fas fa-tasks"></i><p>Opcional</p></a></li>
-              <li class="nav-item"><a href="/fiscal-ncm" class="nav-link"><i class="nav-icon fas fa-hand-holding-usd"></i><p>Fiscal NCM</p></a></li>
-              <li class="nav-item"><a href="/produto-tabela-preco" class="nav-link"><i class="nav-icon fas fa-table"></i><p>Tabela de Preço</p></a></li>
-            </ul>
           </li>
 
           <!-- Serviços -->
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-tag"></i>
-              <p>Serviços<i class="right fas fa-angle-left"></i></p>
+              <p>Serviços</p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/servico" class="nav-link"><i class="nav-icon fas fa-tag"></i><p>Serviço</p></a></li>
-              <li class="nav-item"><a href="/servico-grupo" class="nav-link"><i class="nav-icon fas fa-object-ungroup"></i><p>Grupo</p></a></li>
-              <li class="nav-item"><a href="/servico-subgrupo" class="nav-link"><i class="nav-icon fas fa-layer-group"></i><p>SubGrupo</p></a></li>
-              <li class="nav-item"><a href="/configuracao-servicos-colaborador" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Configuração de Serviços por Colaborador</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Fiscal -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file-invoice"></i>
-              <p>Fiscal<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/CertificadoNota" class="nav-link"><i class="nav-icon fas fa-certificate"></i><p>Certificado Nota</p></a></li>
-              <li class="nav-item"><a href="/EmpresaNota" class="nav-link"><i class="nav-icon fas fa-building"></i><p>Empresa Nota (Prestador)</p></a></li>
-              <li class="nav-item"><a href="/WebhookNota" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>Webhook Nota</p></a></li>
-              <li class="nav-item"><a href="/ServicoNota" class="nav-link"><i class="nav-icon far fa-file-alt"></i><p>Serviço Nota</p></a></li>
-              <li class="nav-item"><a href="/GerarNotaFiscalAutomatico" class="nav-link"><i class="nav-icon fas fa-plus"></i><p>Gerar Nota Fiscal Automático</p></a></li>
-              <li class="nav-item"><a href="/GerenciamentoNfse" class="nav-link"><i class="nav-icon fas fa-file-pdf"></i><p>Gerenciamento NFSE</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Boletos -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file-invoice"></i>
-              <p>Boletos<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/boleto-cedente" class="nav-link"><i class="nav-icon fas fa-file-import"></i><p>Boletos Cedente</p></a></li>
-              <li class="nav-item"><a href="/boleto-cedente-conta" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Boletos Cedente Conta</p></a></li>
-              <li class="nav-item"><a href="/boleto-cedente-conta-convenio" class="nav-link"><i class="nav-icon fas fa-file-contract"></i><p>Boletos Cedente Conta Convênio</p></a></li>
-              <li class="nav-item"><a href="/PlugBoletoConfiguracao" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Plug Boletos Configuração</p></a></li>
-              <li class="nav-item"><a href="/DepositoViaBoleto" class="nav-link"><i class="nav-icon fas fa-barcode"></i><p>Depósito Via Boletos</p></a></li>
-              <li class="nav-item"><a href="/GerenciamentoBoleto" class="nav-link"><i class="nav-icon far fa-file-alt"></i><p>Gerenciamento boleto</p></a></li>
-              <li class="nav-item"><a href="/BoletoSolicitacaoImpressao" class="nav-link"><i class="nav-icon fas fa-print"></i><p>Boletos Solicitação impressão</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Pagamento Automático -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file-invoice-dollar"></i>
-              <p>Pagamento Automático<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/pagador" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Pagador</p></a></li>
-              <li class="nav-item"><a href="/PagadorConta" class="nav-link"><i class="nav-icon fas fa-money-check-alt"></i><p>Pagador Conta</p></a></li>
-              <li class="nav-item"><a href="/GerenciamentoPagamentoAutomatico" class="nav-link"><i class="nav-icon fas fa-file-invoice"></i><p>Gerenciamento Pagamento Automático</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Pix -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-key"></i>
-              <p>Pix<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/pix-empresa" class="nav-link"><i class="nav-icon fas fa-university"></i><p>Empresa Pix</p></a></li>
-              <li class="nav-item"><a href="/pix-conta" class="nav-link"><i class="nav-icon fas fa-wallet"></i><p>Conta Pix</p></a></li>
-              <li class="nav-item"><a href="/pix-configuracao-webhook" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>Configuração Webhook Pix</p></a></li>
-              <li class="nav-item"><a href="/GerenciamentoPix" class="nav-link"><i class="nav-icon fas fa-tasks"></i><p>Gerenciamento Pix</p></a></li>
-            </ul>
-          </li>
-
-          <!-- TEF -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-credit-card"></i>
-              <p>TEF<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/TefConfiguracao" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>TEF Configuração</p></a></li>
-              <li class="nav-item"><a href="/TefConfiguracaoPinpad" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>TEF Configuração Pinpad</p></a></li>
-              <li class="nav-item"><a href="/TefGerenciamento" class="nav-link"><i class="nav-icon fas fa-tasks"></i><p>TEF Gerenciamento</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Assinatura Pagar.me -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-signature"></i>
-              <p>Assinatura Pagar.me<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/ConfiguracaoPagarme" class="nav-link"><i class="nav-icon fas fa-cog"></i><p>Configuração Pagar.me</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Cadastros -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>Cadastros<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/menu-favorito" class="nav-link"><i class="nav-icon fas fa-archive"></i><p>Menu Favorito</p></a></li>
-              <li class="nav-item"><a href="/fornecedor" class="nav-link"><i class="nav-icon fas fa-user-friends"></i><p>Fornecedor</p></a></li>
-              <li class="nav-item"><a href="/segmento" class="nav-link"><i class="nav-icon fas fa-archive"></i><p>Segmento</p></a></li>
-              <li class="nav-item"><a href="/setor" class="nav-link"><i class="nav-icon fas fa-chart-pie"></i><p>Setor</p></a></li>
-              <li class="nav-item"><a href="/colaborador" class="nav-link"><i class="nav-icon fas fa-id-card"></i><p>Colaborador</p></a></li>
-              <li class="nav-item"><a href="/empresa" class="nav-link"><i class="nav-icon fas fa-university"></i><p>Empresa</p></a></li>
-              <li class="nav-item"><a href="/configuracao" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Configuração</p></a></li>
-              <li class="nav-item"><a href="/uf" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>UF</p></a></li>
-              <li class="nav-item"><a href="/municipio" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Município</p></a></li>
-              <li class="nav-item"><a href="/bairro" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Bairro</p></a></li>
-              <li class="nav-item"><a href="/rua" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Rua</p></a></li>
-              <li class="nav-item"><a href="/usuario" class="nav-link"><i class="nav-icon fas fa-key"></i><p>Usuário</p></a></li>
-              <li class="nav-item"><a href="/perfil-acesso" class="nav-link"><i class="nav-icon far fa-user"></i><p>Perfil Acesso</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Monitoramento -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-line"></i>
-              <p>Monitoramento<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/comparativo-recebimento-pagamento" class="nav-link"><i class="nav-icon fas fa-chart-line"></i><p>Comparativo Recebimento X Pagamento</p></a></li>
-              <li class="nav-item"><a href="/contas-padrao-consumo" class="nav-link"><i class="nav-icon fas fa-chart-bar"></i><p>Padrão de Consumo de Contas</p></a></li>
-              <li class="nav-item"><a href="/dashboard-financeiro" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard Financeiro</p></a></li>
-              <li class="nav-item"><a href="/estoque-dashboard" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard Estoque</p></a></li>
-            </ul>
-          </li>
-
-          <li class="nav-header">MÓDULOS</li>
-
-          <!-- Cemitérios -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cross"></i>
-              <p>Cemitérios<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/cemiterio" class="nav-link"><i class="nav-icon fas fa-cross"></i><p>Cemitério</p></a></li>
-              <li class="nav-item"><a href="/jazigo" class="nav-link"><i class="nav-icon fas fa-church"></i><p>Jazigo</p></a></li>
-              <li class="nav-item"><a href="/JazigoVenda" class="nav-link"><i class="nav-icon fas fa-money-bill-alt"></i><p>Venda Jazigo</p></a></li>
-              <li class="nav-item"><a href="/velorio" class="nav-link"><i class="nav-icon fas fa-church"></i><p>Velório</p></a></li>
-              <li class="nav-item"><a href="/Sepultamento" class="nav-link"><i class="nav-icon fas fa-cross"></i><p>Sepultamento</p></a></li>
-              <li class="nav-item"><a href="/obito" class="nav-link"><i class="nav-icon fas fa-skull"></i><p>Óbito</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Clínica -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-hospital"></i>
-              <p>Clínica<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/AgendamentoClinica" class="nav-link"><i class="nav-icon fas fa-calendar-check"></i><p>Agendamento</p></a></li>
-              <li class="nav-item"><a href="/ProntuarioEletronicoV2" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Atendimento</p></a></li>
-              <li class="nav-item"><a href="/convenio" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Convênio</p></a></li>
-              <li class="nav-item"><a href="/exame" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Exames</p></a></li>
-              <li class="nav-item"><a href="/ClinicaHorario" class="nav-link"><i class="nav-icon fas fa-user-clock"></i><p>Horário de Atendimento</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Planos -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-clipboard-list"></i>
-              <p>Planos<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/plano" class="nav-link"><i class="nav-icon fas fa-paste"></i><p>Plano</p></a></li>
-              <li class="nav-item"><a href="/PlanoContratacaoV2" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Venda de Planos</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Financeiro -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-money-bill-alt"></i>
-              <p>Financeiro<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/Conciliacao" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Conciliação Cartão</p></a></li>
-              <li class="nav-item"><a href="/ConciliacaoBancaria" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Conciliação Bancária</p></a></li>
-              <li class="nav-item"><a href="/LivroCaixa" class="nav-link"><i class="nav-icon fas fa-book"></i><p>Livro Caixa</p></a></li>
-              <li class="nav-item"><a href="/Mensalidade" class="nav-link"><i class="nav-icon fas fa-barcode"></i><p>Baixa Mensalidades</p></a></li>
-              <li class="nav-item"><a href="/Pagamento" class="nav-link"><i class="nav-icon fas fa-reply-all"></i><p>Pagamentos</p></a></li>
-              <li class="nav-item"><a href="/Recebimento" class="nav-link"><i class="nav-icon fas fa-file-invoice-dollar"></i><p>Recebimentos</p></a></li>
-              <li class="nav-item"><a href="/Contrato" class="nav-link"><i class="nav-icon fas fa-file-contract"></i><p>Contratos</p></a></li>
-              <li class="nav-item"><a href="/Pix" class="nav-link"><i class="nav-icon fas fa-dollar-sign"></i><p>Pix</p></a></li>
-              <li class="nav-item"><a href="/Deposito" class="nav-link"><i class="nav-icon fas fa-piggy-bank"></i><p>Depósitos</p></a></li>
-            </ul>
-          </li>
-
-          <!-- RH -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-clipboard-list"></i>
-              <p>RH<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/folha-pagamento" class="nav-link"><i class="nav-icon fas fa-paste"></i><p>Folha Pagamento</p></a></li>
-              <li class="nav-item"><a href="/registro-ponto" class="nav-link"><i class="nav-icon fas fa-calendar-check"></i><p>Histórico Ponto</p></a></li>
-              <li class="nav-item"><a href="/ferias" class="nav-link"><i class="nav-icon fas fa-calendar-times"></i><p>Férias</p></a></li>
-              <li class="nav-item"><a href="/treinamento" class="nav-link"><i class="nav-icon fas fa-book-reader"></i><p>Treinamento</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Estoque -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cubes"></i>
-              <p>Estoque<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/Compra" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i><p>Compra</p></a></li>
-              <li class="nav-item"><a href="/ajuste-estoque" class="nav-link"><i class="nav-icon fas fa-clipboard-check"></i><p>Ajuste Estoque</p></a></li>
-              <li class="nav-item"><a href="/cotacao" class="nav-link"><i class="nav-icon fas fa-shopping-basket"></i><p>Cotação</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Faturamento -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-dollar-sign"></i>
-              <p>Faturamento<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/Venda" class="nav-link"><i class="nav-icon fas fa-dollar-sign"></i><p>Venda</p></a></li>
-              <li class="nav-item"><a href="/OrdemServico" class="nav-link"><i class="nav-icon fas fa-file-invoice"></i><p>Ordem Serviço</p></a></li>
-              <li class="nav-item"><a href="/ProdutoOrcamento" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Orçamento Farmácia</p></a></li>
-            </ul>
-          </li>
-
-          <!-- Call Center -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-headset"></i>
-              <p>Call Center<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/CentralAtendimentos" class="nav-link"><i class="nav-icon fas fa-globe"></i><p>Central Atendimentos</p></a></li>
-              <li class="nav-item"><a href="/ListagemAtendimentos" class="nav-link"><i class="nav-icon fas fa-list-ul"></i><p>Listagem Atendimento</p></a></li>
-            </ul>
-          </li>
-
-          <!-- APP -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-mobile"></i>
-              <p>APP<i class="right fas fa-angle-left"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="/DispositivosHomologados" class="nav-link"><i class="nav-icon fas fa-cogs"></i><p>Dispositivo Homologado</p></a></li>
-              <li class="nav-item"><a href="/RelatorioArrecadacaoMensal" class="nav-link"><i class="nav-icon fas fa-chart-pie"></i><p>Arrecadação Mensal</p></a></li>
-              <li class="nav-item"><a href="/Visita" class="nav-link"><i class="nav-icon fas fa-briefcase"></i><p>Visita</p></a></li>
-            </ul>
           </li>
 
         </ul>
@@ -408,12 +202,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0" id="pageTitle">Clientes</h1>
+            <h1 class="m-0" id="pageTitle">Validação Select2</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.html">Início</a></li>
-              <li class="breadcrumb-item active" id="breadcrumbCurrent">Clientes</li>
+              <li class="breadcrumb-item active" id="breadcrumbCurrent">Validação Select2</li>
             </ol>
           </div>
         </div>
@@ -436,7 +230,7 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="filtroCliente">Cliente</label>
+                  <label for="filtroCliente">Registro</label>
                   <select id="filtroCliente" class="form-control select2-single" style="width: 100%;">
                     <option value="">Todos</option>
                     <option value="1">João Silva</option>
@@ -571,9 +365,9 @@
         <!-- Tabela de resultados -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-list mr-1"></i> Listagem de Clientes</h3>
+            <h3 class="card-title"><i class="fas fa-list mr-1"></i> Listagem de Registros</h3>
             <div class="card-tools">
-              <button type="button" class="btn btn-success btn-sm"><i class="fas fa-plus mr-1"></i> Novo Cliente</button>
+              <button type="button" class="btn btn-success btn-sm"><i class="fas fa-plus mr-1"></i> Novo Registro</button>
             </div>
           </div>
           <div class="card-body table-responsive p-0">
@@ -1026,18 +820,18 @@
     const isClientesMode = params.get('page') === 'clientes';
 
     if (!isClientesMode) {
-      document.title = 'WT Private Test - Início';
+      document.title = 'Sandbox UI - Início';
       $('#pageTitle').text('Início');
       $('#breadcrumbCurrent').text('Início');
 
       $('.content .container-fluid').first().html(`
         <div class="card card-primary card-outline">
           <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> Objetivo do ambiente</h3>
+            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> Ambiente de validação</h3>
           </div>
           <div class="card-body">
-            <p>Este site privado simula o comportamento de componentes da biblioteca <strong>Select2</strong> para validação do WT.</p>
-            <p>Para testar o cenário principal de single select, navegue no menu lateral em <strong>Clientes &gt; Clientes</strong> ou clique no botão abaixo.</p>
+            <p>Este site privado simula o comportamento de componentes da biblioteca <strong>Select2</strong> para cenários de validação do WT.</p>
+            <p>Para testar o cenário principal de single select, abra a página de <strong>Registro > Registros</strong> pelo menu lateral ou pelo botão abaixo.</p>
             <a class="btn btn-primary" href="clientes.html">
               <i class="fas fa-arrow-right mr-1"></i> Ir para página de teste
             </a>
@@ -1045,9 +839,9 @@
         </div>
       `);
     } else {
-      document.title = 'WT Private Test - Select2';
-      $('#pageTitle').text('Clientes');
-      $('#breadcrumbCurrent').text('Clientes');
+      document.title = 'Sandbox UI - Select2';
+      $('#pageTitle').text('Registros');
+      $('#breadcrumbCurrent').text('Registros');
     }
 
     $('.select2-single').select2({
