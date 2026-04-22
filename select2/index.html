@@ -161,7 +161,7 @@
               <p>Registro<i class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="clientes.html" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Registros</p></a></li>
+              <li class="nav-item"><a href="registros.html" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Registros</p></a></li>
               <li class="nav-item"><a href="/Profissional" class="nav-link"><i class="nav-icon fas fa-user-tie"></i><p>Profissional</p></a></li>
             </ul>
           </li>
@@ -817,7 +817,8 @@
 <script>
   $(function () {
     const params = new URLSearchParams(window.location.search);
-    const isClientesMode = params.get('page') === 'clientes';
+    const currentPage = params.get('page');
+    const isClientesMode = currentPage === 'registros' || currentPage === 'clientes';
 
     if (!isClientesMode) {
       document.title = 'Sandbox UI - Início';
@@ -832,7 +833,7 @@
           <div class="card-body">
             <p>Este site privado simula o comportamento de componentes da biblioteca <strong>Select2</strong> para cenários de validação do WT.</p>
             <p>Para testar o cenário principal de single select, abra a página de <strong>Registro > Registros</strong> pelo menu lateral ou pelo botão abaixo.</p>
-            <a class="btn btn-primary" href="clientes.html">
+            <a class="btn btn-primary" href="registros.html">
               <i class="fas fa-arrow-right mr-1"></i> Ir para página de teste
             </a>
           </div>
@@ -987,7 +988,7 @@
 
     $(document).on('click', '#conteudoMenu a, .brand-link', function (event) {
       const href = ($(this).attr('href') || '').toLowerCase();
-      const allowNavigation = href.endsWith('index.html') || href.endsWith('clientes.html');
+      const allowNavigation = href.endsWith('index.html') || href.endsWith('registros.html') || href.endsWith('clientes.html');
       const isAccordionToggle = href === '#';
 
       if (allowNavigation || isAccordionToggle) return;

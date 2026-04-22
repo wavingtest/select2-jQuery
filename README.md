@@ -18,9 +18,9 @@ clientes que adotam essa stack.
 ## Páginas
 
 - `/index.html` — **Início**: explica o objetivo do ambiente e orienta a navegação.
-- `/index.html?page=clientes` — **Clientes**: página principal de validação com
-  sidebar completa, filtros Select2, tabela de clientes e paginação da listagem.
-- `/clientes.html` — atalho para redirecionar para a página de clientes.
+- `/index.html?page=registros` — **Registros**: página principal de validação com
+  sidebar completa, filtros Select2, tabela de registros e paginação da listagem.
+- `/registros.html` — atalho para redirecionar para a página de registros.
 
 ## Como rodar
 
@@ -43,5 +43,5 @@ npm run preview
 ## Estrutura do projeto
 
 - `select2/index.html` — layout principal e toda a lógica de filtros/paginação.
-- `select2/clientes.html` — página de redirecionamento para o modo clientes.
+- `select2/registros.html` — página de redirecionamento para o modo registros.
 - `package.json` — scripts de execução e build com Vite.
