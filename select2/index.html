@@ -232,7 +232,7 @@
                 <div class="form-group">
                   <label for="filtroCliente">Registro</label>
                   <select id="filtroCliente" class="form-control select2-single" style="width: 100%;">
-                    <option value="">Todos</option>
+                    <option value="todos" selected>Todos</option>
                     <option value="1">João Silva</option>
                     <option value="2">Maria Santos</option>
                     <option value="3">Carlos Oliveira</option>
@@ -256,7 +256,7 @@
                 <div class="form-group">
                   <label for="filtroStatus">Status</label>
                   <select id="filtroStatus" class="form-control select2-single" style="width: 100%;">
-                    <option value="">Todos</option>
+                    <option value="todos" selected>Todos</option>
                     <option value="ativo">Ativo</option>
                     <option value="inativo">Inativo</option>
                     <option value="pendente">Pendente</option>
@@ -269,7 +269,7 @@
                 <div class="form-group">
                   <label for="filtroSegmento">Segmento</label>
                   <select id="filtroSegmento" class="form-control select2-single" style="width: 100%;">
-                    <option value="">Todos</option>
+                    <option value="todos" selected>Todos</option>
                     <option value="1">Varejo</option>
                     <option value="2">Atacado</option>
                     <option value="3">Indústria</option>
@@ -287,7 +287,7 @@
                 <div class="form-group">
                   <label for="filtroUF">UF</label>
                   <select id="filtroUF" class="form-control select2-single" style="width: 100%;">
-                    <option value="">Todos</option>
+                    <option value="todos" selected>Todos</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
@@ -323,7 +323,7 @@
                 <div class="form-group">
                   <label for="filtroCidade">Cidade</label>
                   <select id="filtroCidade" class="form-control select2-single" style="width: 100%;">
-                    <option value="">Todos</option>
+                    <option value="todos" selected>Todos</option>
                     <option value="1">São Paulo</option>
                     <option value="2">Rio de Janeiro</option>
                     <option value="3">Belo Horizonte</option>
@@ -342,7 +342,7 @@
                 <div class="form-group">
                   <label for="filtroVendedor">Vendedor</label>
                   <select id="filtroVendedor" class="form-control select2-single" style="width: 100%;">
-                    <option value="">Todos</option>
+                    <option value="todos" selected>Todos</option>
                     <option value="1">André Luiz</option>
                     <option value="2">Marcos Paulo</option>
                     <option value="3">Patricia Gomes</option>
@@ -852,6 +852,9 @@
       allowClear: true
     });
 
+    // Garante que todos os filtros iniciem em "Todos".
+    $('.select2-single').val('todos').trigger('change');
+
     if (isClientesMode) {
       const normalize = (value) =>
         (value || '')
@@ -934,7 +937,7 @@
           const vendedorMatches = !selectedVendedor || selectedVendedor === 'todos' || vendedor === selectedVendedor;
           const segmentoMatches = !selectedSegmento || selectedSegmento === 'todos' || segmento === selectedSegmento;
           const cidadeMatches = !selectedCidade || selectedCidade === 'todos' || cidade === selectedCidade;
-          const ufMatches = !selectedUf || uf === selectedUf;
+          const ufMatches = !selectedUf || selectedUf === 'todos' || uf === selectedUf;
 
           return clienteMatches && statusMatches && vendedorMatches && segmentoMatches && cidadeMatches && ufMatches;
         }).toArray();
@@ -977,7 +980,7 @@
 
       $('#btnLimparFiltros').on('click', function () {
         $('#filtroCliente, #filtroStatus, #filtroSegmento, #filtroUF, #filtroCidade, #filtroVendedor')
-          .val('')
+          .val('todos')
           .trigger('change');
 
         applyFilters(true);
