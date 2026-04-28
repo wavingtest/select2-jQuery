@@ -267,6 +267,7 @@
       <div class="container-fluid">
 
         <!-- Filtros -->
+        <!-- Card container (Bootstrap 4 / AdminLTE) -->
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title"><i class="fas fa-filter mr-1"></i> Filtros</h3>
@@ -876,89 +877,214 @@
       $('.content .container-fluid').first().html(`
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-calendar-check mr-1"></i> Fluxo de Atendimento</h3>
+            <h3 class="card-title"><i class="fas fa-calendar-check mr-1"></i> Central de Atendimentos</h3>
           </div>
           <div class="card-body">
+            <!-- Main tabs: Agenda | Lista (Bootstrap 4 Tabs) -->
             <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link active" href="#painel" data-toggle="tab">Painel</a>
+                <a class="nav-link active" href="#agenda" data-toggle="tab">Agenda</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#fila" data-toggle="tab">Fila</a>
+                <a class="nav-link" href="#lista" data-toggle="tab">Lista</a>
               </li>
             </ul>
             <div class="tab-content pt-3">
-              <div class="tab-pane active" id="painel">
-                <div class="alert alert-info mb-0">
-                  Área de painel para testes do fluxo de navegação e mudança de abas.
+              <!-- Agenda tab content -->
+              <div class="tab-pane active" id="agenda">
+                <div class="fc fc-ltr fc-unthemed">
+                  <!-- View switcher (Bootstrap 4 Button Group + jQuery behavior) -->
+                  <div class="btn-group btn-group-sm mb-3 float-right" role="group" aria-label="Visualização da agenda">
+                    <button type="button" class="btn btn-primary agenda-view-btn active" data-agenda-view="month">Mês</button>
+                    <button type="button" class="btn btn-default agenda-view-btn" data-agenda-view="week">Semana</button>
+                    <button type="button" class="btn btn-default agenda-view-btn" data-agenda-view="day">Dia</button>
+                    <button type="button" class="btn btn-default agenda-view-btn" data-agenda-view="list">Lista</button>
+                  </div>
+                  <!-- Month-like calendar (HTML table styled with Bootstrap 4) -->
+                  <div id="agenda-month-view" class="table-responsive">
+                    <table class="table table-bordered text-center mb-0">
+                      <thead>
+                        <tr>
+                          <th>Dom</th>
+                          <th>Seg</th>
+                          <th>Ter</th>
+                          <th>Qua</th>
+                          <th>Qui</th>
+                          <th>Sex</th>
+                          <th>Sáb</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-muted">29</td>
+                          <td class="text-muted">30</td>
+                          <td>1</td>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>4</td>
+                          <td>5</td>
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>7</td>
+                          <td>8</td>
+                          <td>9</td>
+                          <td>10</td>
+                          <td>11</td>
+                          <td>12</td>
+                        </tr>
+                        <tr>
+                          <td>13</td>
+                          <td>14</td>
+                          <td>15</td>
+                          <td>16</td>
+                          <td>17</td>
+                          <td>18</td>
+                          <td>19</td>
+                        </tr>
+                        <tr>
+                          <td>20</td>
+                          <td>21</td>
+                          <td>22</td>
+                          <td>23</td>
+                          <td>24</td>
+                          <td>25</td>
+                          <td>26</td>
+                        </tr>
+                        <tr>
+                          <td>27</td>
+                          <td>28<div class="badge badge-info d-block mt-1">15:10 - Helena Duarte</div></td>
+                          <td>29</td>
+                          <td>30</td>
+                          <td class="text-muted">1</td>
+                          <td class="text-muted">2</td>
+                          <td class="text-muted">3</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- Agenda list view (HTML table styled with Bootstrap 4) -->
+                  <div id="agenda-list-view" class="table-responsive" style="display: none;">
+                    <table class="table table-bordered table-hover mb-0">
+                      <thead>
+                        <tr>
+                          <th>Data</th>
+                          <th>Horário</th>
+                          <th>Cliente</th>
+                          <th>Colaborador</th>
+                          <th>Situação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>28/04/2026</td>
+                          <td>15:10</td>
+                          <td>Helena Duarte</td>
+                          <td>Mariana Lopes</td>
+                          <td><span class="badge badge-secondary">Programado</span></td>
+                        </tr>
+                        <tr>
+                          <td>28/04/2026</td>
+                          <td>16:20</td>
+                          <td>Vinicius Carvalho</td>
+                          <td>Rafaela Moreira</td>
+                          <td><span class="badge badge-success">Confirmado</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-              <div class="tab-pane" id="fila">
-                <div class="table-responsive">
-                  <table id="listagem" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th style="width:3%;">Id</th>
-                        <th>Cliente</th>
-                        <th>Contato</th>
-                        <th>Especialista</th>
-                        <th>Unidade</th>
-                        <th>Horário</th>
-                        <th>Situação</th>
-                        <th>Responsável</th>
-                        <th style="width: 10%; text-align: center;">Ações</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>81024</td>
-                        <td>Helena Duarte</td>
-                        <td>(11) 98888-0111</td>
-                        <td>Mariana Lopes</td>
-                        <td>Unidade Centro</td>
-                        <td>28/04/2026 - 15:10:00</td>
-                        <td><span class="badge badge-secondary">Programado</span></td>
-                        <td>001 - Paulo Nunes</td>
-                        <td>
-                          <div class="dropdown">
-                            <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Ações <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-print mr-1"></i> Imprimir</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-check mr-1"></i> Atualizar Status</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt mr-1"></i> Editar</a>
-                              <a class="dropdown-item text-danger" href="#"><i class="fas fa-trash mr-1"></i> Excluir</a>
+              <!-- Lista tab content -->
+              <div class="tab-pane" id="lista">
+                <!-- DataTables-like wrapper/classes -->
+                <div id="listagem_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                  <div class="table-responsive">
+                    <table id="listagem" class="table table-bordered table-hover dataTable no-footer">
+                      <thead>
+                        <tr>
+                          <th style="width:3%;">Id</th>
+                          <th>Cliente</th>
+                          <th>Contato</th>
+                          <th>Colaborador</th>
+                          <th>Empresa</th>
+                          <th>Horário</th>
+                          <th>Situação</th>
+                          <th>Colaborador indicação</th>
+                          <th style="width: 10%; text-align: center;">Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>81024</td>
+                          <td>Helena Duarte</td>
+                          <td>(11) 98888-0111</td>
+                          <td>Mariana Lopes</td>
+                          <td>Unidade Centro</td>
+                          <td>28/04/2026 - 15:10:00</td>
+                          <td><span class="badge badge-secondary">Programado</span></td>
+                          <td>001 - Paulo Nunes</td>
+                          <td>
+                            <!-- Actions dropdown (Bootstrap 4 Dropdown) -->
+                            <div class="dropdown">
+                              <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ações <span class="caret"></span>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i class="fas fa-print mr-1"></i> Imprimir</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-check mr-1"></i> Atualizar Status</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt mr-1"></i> Editar</a>
+                                <a class="dropdown-item text-danger" href="#"><i class="fas fa-trash mr-1"></i> Excluir</a>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>81023</td>
-                        <td>Vinicius Carvalho</td>
-                        <td>(21) 97777-0222</td>
-                        <td>Rafaela Moreira</td>
-                        <td>Unidade Norte</td>
-                        <td>28/04/2026 - 16:20:00</td>
-                        <td><span class="badge badge-success">Confirmado</span></td>
-                        <td>002 - Camila Prado</td>
-                        <td>
-                          <div class="dropdown">
-                            <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Ações <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-print mr-1"></i> Imprimir</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-check mr-1"></i> Atualizar Status</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt mr-1"></i> Editar</a>
-                              <a class="dropdown-item text-danger" href="#"><i class="fas fa-trash mr-1"></i> Excluir</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>81023</td>
+                          <td>Vinicius Carvalho</td>
+                          <td>(21) 97777-0222</td>
+                          <td>Rafaela Moreira</td>
+                          <td>Unidade Norte</td>
+                          <td>28/04/2026 - 16:20:00</td>
+                          <td><span class="badge badge-success">Confirmado</span></td>
+                          <td>002 - Camila Prado</td>
+                          <td>
+                            <!-- Actions dropdown (Bootstrap 4 Dropdown) -->
+                            <div class="dropdown">
+                              <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ações <span class="caret"></span>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i class="fas fa-print mr-1"></i> Imprimir</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-check mr-1"></i> Atualizar Status</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt mr-1"></i> Editar</a>
+                                <a class="dropdown-item text-danger" href="#"><i class="fas fa-trash mr-1"></i> Excluir</a>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+                <!-- Loading overlay (AdminLTE) + spinner icon (Font Awesome) -->
+                <div id="js-load" class="overlay" style="z-index: 50; background: rgba(255, 255, 255, 0.7); border-radius: 3px; position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none;">
+                  <i class="fas fa-sync-alt fa-spin" style="position: absolute; top: 50%; left: 50%; margin-left: -15px; margin-top: -15px; color: #000; font-size: 30px;"></i>
+                </div>
+                <!-- Reusable actions template (HTML template + Bootstrap dropdown) -->
+                <template id="templateButtonAcoes">
+                  <div class="dropdown">
+                    <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Ações <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="#"><i class="fas fa-print mr-1"></i> Imprimir</a>
+                      <a class="dropdown-item" href="#"><i class="fas fa-check mr-1"></i> Atualizar Status</a>
+                      <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt mr-1"></i> Editar</a>
+                      <a class="dropdown-item text-danger" href="#"><i class="fas fa-trash mr-1"></i> Excluir</a>
+                    </div>
+                  </div>
+                </template>
               </div>
             </div>
           </div>
@@ -987,6 +1113,30 @@
       document.title = 'Sandbox UI - Select2';
       $('#pageTitle').text('Registros');
       $('#breadcrumbCurrent').text('Registros');
+    }
+
+    if (isAgendaMode) {
+      // Agenda view state handler (jQuery): toggle month/list visualizations.
+      const setAgendaView = (view) => {
+        const selectedView = view === 'list' ? 'list' : 'month';
+        const isList = selectedView === 'list';
+
+        $('#agenda-month-view').toggle(!isList);
+        $('#agenda-list-view').toggle(isList);
+
+        $('.agenda-view-btn').each(function () {
+          const $button = $(this);
+          const buttonView = ($button.data('agenda-view') || '').toString();
+          const isActiveButton = selectedView === 'list' ? buttonView === 'list' : buttonView === 'month';
+          $button.toggleClass('active btn-primary', isActiveButton);
+          $button.toggleClass('btn-default', !isActiveButton);
+        });
+      };
+
+      $(document).on('click', '.agenda-view-btn', function () {
+        const targetView = ($(this).data('agenda-view') || '').toString();
+        setAgendaView(targetView);
+      });
     }
 
     $('.select2-single').select2({
