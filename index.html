@@ -129,6 +129,33 @@
       background-color: var(--wt-primary);
       border-color: var(--wt-primary);
     }
+    .sidebar-form {
+      padding: 12px 12px 6px;
+    }
+    .sidebar-form .form-control {
+      border-radius: 6px 0 0 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+    .sidebar-form .form-control::placeholder {
+      color: #dbeafe;
+    }
+    .sidebar-form .btn {
+      border-radius: 0 6px 6px 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-left: 0;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .menu-subtitle {
+      display: block;
+      font-size: 11px;
+      line-height: 1.1;
+      opacity: 0.9;
+      margin-left: 22px;
+      margin-top: 2px;
+    }
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -141,6 +168,18 @@
     </a>
 
     <div class="sidebar">
+      <div class="sidebar-form">
+        <form autocomplete="off" id="form-pesquisa-menu">
+          <div class="input-group input-group-sm">
+            <input type="text" id="pesquisaMenu" class="form-control" placeholder="Pesquisar Menu..." autocomplete="off">
+            <span class="input-group-append">
+              <button type="submit" name="search" id="search-btn" class="btn">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
       <nav class="mt-2">
         <ul id="conteudoMenu" class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -187,6 +226,15 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-tag"></i>
               <p>Serviços</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html?page=central-atendimentos" class="nav-link" data-toggle="tooltip" data-placement="top" title="Central de Atendimentos">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Central
+                <small class="menu-subtitle"><i>Atendimentos</i></small>
+              </p>
             </a>
           </li>
 
@@ -819,8 +867,104 @@
     const params = new URLSearchParams(window.location.search);
     const currentPage = params.get('page');
     const isClientesMode = currentPage === 'registros' || currentPage === 'clientes';
+    const isAgendaMode = currentPage === 'central-atendimentos';
 
-    if (!isClientesMode) {
+    if (isAgendaMode) {
+      document.title = 'Sandbox UI - Central de Atendimentos';
+      $('#pageTitle').text('Central de Atendimentos');
+      $('#breadcrumbCurrent').text('Central de Atendimentos');
+      $('.content .container-fluid').first().html(`
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-calendar-check mr-1"></i> Fluxo de Atendimento</h3>
+          </div>
+          <div class="card-body">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" href="#painel" data-toggle="tab">Painel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#fila" data-toggle="tab">Fila</a>
+              </li>
+            </ul>
+            <div class="tab-content pt-3">
+              <div class="tab-pane active" id="painel">
+                <div class="alert alert-info mb-0">
+                  Área de painel para testes do fluxo de navegação e mudança de abas.
+                </div>
+              </div>
+              <div class="tab-pane" id="fila">
+                <div class="table-responsive">
+                  <table id="listagem" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th style="width:3%;">Id</th>
+                        <th>Cliente</th>
+                        <th>Contato</th>
+                        <th>Especialista</th>
+                        <th>Unidade</th>
+                        <th>Horário</th>
+                        <th>Situação</th>
+                        <th>Responsável</th>
+                        <th style="width: 10%; text-align: center;">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>81024</td>
+                        <td>Helena Duarte</td>
+                        <td>(11) 98888-0111</td>
+                        <td>Mariana Lopes</td>
+                        <td>Unidade Centro</td>
+                        <td>28/04/2026 - 15:10:00</td>
+                        <td><span class="badge badge-secondary">Programado</span></td>
+                        <td>001 - Paulo Nunes</td>
+                        <td>
+                          <div class="dropdown">
+                            <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Ações <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <a class="dropdown-item" href="#"><i class="fas fa-print mr-1"></i> Imprimir</a>
+                              <a class="dropdown-item" href="#"><i class="fas fa-check mr-1"></i> Atualizar Status</a>
+                              <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt mr-1"></i> Editar</a>
+                              <a class="dropdown-item text-danger" href="#"><i class="fas fa-trash mr-1"></i> Excluir</a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>81023</td>
+                        <td>Vinicius Carvalho</td>
+                        <td>(21) 97777-0222</td>
+                        <td>Rafaela Moreira</td>
+                        <td>Unidade Norte</td>
+                        <td>28/04/2026 - 16:20:00</td>
+                        <td><span class="badge badge-success">Confirmado</span></td>
+                        <td>002 - Camila Prado</td>
+                        <td>
+                          <div class="dropdown">
+                            <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Ações <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <a class="dropdown-item" href="#"><i class="fas fa-print mr-1"></i> Imprimir</a>
+                              <a class="dropdown-item" href="#"><i class="fas fa-check mr-1"></i> Atualizar Status</a>
+                              <a class="dropdown-item" href="#"><i class="fas fa-pencil-alt mr-1"></i> Editar</a>
+                              <a class="dropdown-item text-danger" href="#"><i class="fas fa-trash mr-1"></i> Excluir</a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `);
+    } else if (!isClientesMode) {
       document.title = 'Sandbox UI - Início';
       $('#pageTitle').text('Início');
       $('#breadcrumbCurrent').text('Início');
@@ -989,9 +1133,30 @@
       applyFilters(true);
     }
 
+    $('#form-pesquisa-menu').on('submit', function (event) {
+      event.preventDefault();
+    });
+
+    const filterMenuItems = () => {
+      const query = ($('#pesquisaMenu').val() || '').toString().trim().toLowerCase();
+      const $items = $('#conteudoMenu > li.nav-item');
+
+      if (!query) {
+        $items.show();
+        return;
+      }
+
+      $items.each(function () {
+        const text = $(this).text().toLowerCase();
+        $(this).toggle(text.includes(query));
+      });
+    };
+
+    $('#pesquisaMenu').on('input', filterMenuItems);
+
     $(document).on('click', '#conteudoMenu a, .brand-link', function (event) {
       const href = ($(this).attr('href') || '').toLowerCase();
-      const allowNavigation = href.endsWith('index.html') || href.endsWith('registros.html') || href.endsWith('clientes.html');
+      const allowNavigation = href.endsWith('index.html') || href.endsWith('registros.html') || href.endsWith('clientes.html') || href.includes('page=central-atendimentos');
       const isAccordionToggle = href === '#';
 
       if (allowNavigation || isAccordionToggle) return;

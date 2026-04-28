@@ -1,5 +1,5 @@
 $port = 8090
-$root = "c:\Users\gabriel_coimbra\Desktop\WT Private Test\select2"
+$root = "c:\Users\gabriel_coimbra\Desktop\WT Private Test"
 
 $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://localhost:${port}/")

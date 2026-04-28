@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite select2 --host --port 3000",
-    "build": "vite build select2",
+    "dev": "vite --host --port 3000",
+    "build": "vite build",
     "preview": "vite preview --host --port 3000"
   },
   "devDependencies": {
